@@ -6,15 +6,37 @@ Rust 코드를 읽고 쓰는 데 익숙해지기 위한 작은 연습문제들�
 
 ## 설치 및 실행
 
-### 1. Rustlings 설치
+### 사전 준비
 
-아직 Rustlings를 설치하지 않았다면:
+Rust가 설치되어 있지 않다면 먼저 설치해주세요.
+
+**macOS:**
+```bash
+xcode-select --install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+**Linux (Debian/Ubuntu):**
+```bash
+sudo apt install gcc
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+**Windows:**
+
+[rust-lang.org/tools/install](https://www.rust-lang.org/tools/install) 에서 설치하세요.
+
+> 설치 후 터미널을 재시작해주세요.
+
+### 1. Rustlings 설치
 
 ```bash
 cargo install rustlings
 ```
 
-### 2. 이 저장소 클론
+> **주의:** `rustlings init`은 실행하지 마세요. 영어 기본 버전이 생성됩니다.
+
+### 2. 한국어 버전 받기
 
 ```bash
 git clone https://github.com/eoncheole/rustlings-kr.git
