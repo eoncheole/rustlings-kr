@@ -1,0 +1,14 @@
+// TODO: 이 함수를 바꾸지 않고 `main` 함수의 컴파일러 에러를 고쳐봐!
+fn is_a_color_word(attempt: &str) -> bool {
+    attempt == "green" || attempt == "blue" || attempt == "red"
+}
+
+fn main() {
+    let word = String::from("green"); // 이 줄은 바꾸지 마!
+
+    if is_a_color_word(word) {
+        println!("That is a color word I know!");
+    } else {
+        println!("That is not a color word I know.");
+    }
+}

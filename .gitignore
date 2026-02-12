@@ -1,0 +1,28 @@
+# Rust
+Cargo.lock
+target/
+
+# Rustlings
+.rustlings-state.txt
+
+# IDE
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~

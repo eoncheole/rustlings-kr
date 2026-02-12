@@ -1,0 +1,1164 @@
+format_version = 1
+
+welcome_message = """
+처음이신가요? 걱정 마세요, Rustlings는 초보자를 위해 만들어졌습니다!
+Rust에 대해 많은 것을 알려드리겠지만, 시작하기 전에 Rustlings가 어떻게
+작동하는지 몇 가지 알려드릴게요:
+
+1. Rustlings의 핵심 개념은 연습문제를 풀어보는 거에요. 이 연습문제들에는
+   보통 컴파일러 오류나 로직 오류가 포함되어 있어서 컴파일이나 테스트가
+   실패해요. 모든 오류를 찾아서 고치는 게 여러분의 임무입니다!
+2. `rustlings/` 디렉토리에서 에디터를 열어두세요. Rustlings는 진행바 아래에
+   현재 연습문제의 경로를 보여줘요. 에디터에서 연습문제 파일을 열고, 오류를
+   고치고, 파일을 저장하세요. Rustlings가 자동으로 파일 변경을 감지해서
+   연습문제를 다시 실행해요. 모든 오류가 수정되면, Rustlings가 다음 연습문제로
+   넘어갈지 물어볼 거에요.
+3. 연습문제에서 막히면 `h`를 입력해서 힌트를 확인하세요.
+4. 연습문제가 이해가 안 되면, GitHub에 이슈를 남겨주세요!
+   (https://github.com/rust-lang/rustlings). 모든 이슈를 확인하고 있고,
+   다른 학습자들도 볼 수 있어서 서로 도움을 줄 수 있어요!"""
+
+final_message = """
+Rust의 다양한 측면에 대해 즐겁게 배우셨기를 바랍니다!
+문제를 발견하셨다면, GitHub에 보고하는 것을 망설이지 마세요.
+더 넓은 커뮤니티를 돕기 위해 자신만의 연습문제를 기여할 수도 있어요!
+
+이슈를 보고하거나 기여하기 전에, 가이드라인을 읽어주세요:
+https://github.com/rust-lang/rustlings/blob/main/CONTRIBUTING.md"""
+
+# INTRO
+
+[[exercises]]
+name = "intro1"
+dir = "00_intro"
+test = false
+skip_check_unsolved = true
+hint = """
+`n`을 입력해서 다음 연습문제로 넘어가세요.
+`n`을 입력한 후 ENTER를 눌러야 할 수도 있어요."""
+
+[[exercises]]
+name = "intro2"
+dir = "00_intro"
+test = false
+hint = """
+컴파일러가 출력 매크로의 이름이 잘못되었다고 알려주고 있어요.
+대안도 제안해주고 있네요."""
+
+# VARIABLES
+
+[[exercises]]
+name = "variables1"
+dir = "01_variables"
+test = false
+hint = """
+`main` 함수의 선언부에 Rust에서 새로운 변수 바인딩을 만들 때 필요한
+키워드가 빠져 있어요."""
+
+[[exercises]]
+name = "variables2"
+dir = "01_variables"
+test = false
+hint = """
+컴파일러 메시지는 주어진 정보만으로는 변수 바인딩 `x`의 타입을
+Rust가 추론할 수 없다고 말하고 있어요.
+
+`main` 함수의 첫 번째 줄에 타입 어노테이션을 추가하면 어떻게 될까요?
+
+`x`에 값을 주면 어떨까요?
+
+둘 다 하면 어떨까요?
+
+`x`는 어떤 타입이어야 할까요?
+
+`x`가 `10`과 같은 타입이면 어떨까요? 다른 타입이면요?"""
+
+[[exercises]]
+name = "variables3"
+dir = "01_variables"
+test = false
+hint = """
+이 연습문제에서는 `main` 함수에서 변수 바인딩을 만들었고, 다음 줄에서
+사용하려고 하지만, 값을 할당하지 않았어요.
+
+존재하지 않는 것을 출력할 수는 없어요. `x`에 값을 할당해보세요!
+
+이것은 어떤 프로그래밍 언어에서든 매우 쉽게 할 수 있는 버그를 유발하는
+오류에요 -- 다행히 Rust 컴파일러가 이것을 잡아줬네요!"""
+
+[[exercises]]
+name = "variables4"
+dir = "01_variables"
+test = false
+hint = """
+Rust에서 변수 바인딩은 기본적으로 불변(immutable)이에요. 하지만 여기서는
+`x`에 다른 값을 다시 할당하려고 하고 있죠! 변수 바인딩을 가변(mutable)으로
+만들기 위해 사용할 수 있는 키워드가 있어요."""
+
+[[exercises]]
+name = "variables5"
+dir = "01_variables"
+test = false
+hint = """
+`variables4`에서 특별한 키워드를 사용해서 불변 변수를 가변으로 만드는 방법을
+이미 배웠어요. 하지만 이 연습문제에서는 기존 변수에 다른 타입의 값을 할당하고
+싶기 때문에 그 방법이 큰 도움이 되지 않아요. 때로는 이 연습문제처럼 값을 다른
+타입으로 변환할 때 기존 변수 이름을 재사용하고 싶을 수도 있어요.
+
+다행히 Rust에는 이 문제에 대한 강력한 해결책이 있어요: '섀도잉(Shadowing)'!
+'섀도잉'에 대해 더 알고 싶다면 Rust 책의 '변수와 가변성' 섹션을 읽어보세요:
+https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing
+
+이 기법을 사용해서 연습문제를 풀어보세요."""
+
+[[exercises]]
+name = "variables6"
+dir = "01_variables"
+test = false
+hint = """
+변수와 가변성에 대해 배웠지만, 사용할 수 있는 또 다른 중요한 변수 타입이
+있어요: 상수(constants).
+
+상수는 항상 불변이에요. `let` 대신 `const` 키워드로 선언해요.
+
+상수의 타입은 항상 어노테이션해야 해요.
+
+상수와 변수의 차이에 대해 더 알고 싶다면 Rust 책의 '변수와 가변성' 섹션의
+'상수'를 읽어보세요:
+https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#constants"""
+
+# FUNCTIONS
+
+[[exercises]]
+name = "functions1"
+dir = "02_functions"
+test = false
+hint = """
+이 `main` 함수는 존재할 것으로 기대하는 함수를 호출하고 있지만, 그 함수가
+존재하지 않아요. `call_me`라는 이름의 함수를 기대하고 있어요.
+또한 이 함수는 인자를 받지 않고 값을 반환하지 않아야 해요.
+`main`과 매우 비슷하지 않나요?"""
+
+[[exercises]]
+name = "functions2"
+dir = "02_functions"
+test = false
+hint = """
+Rust는 함수 시그니처의 모든 부분에 타입 어노테이션이 있어야 해요.
+하지만 `call_me`에서 `num`의 타입 어노테이션이 빠져 있어요."""
+
+[[exercises]]
+name = "functions3"
+dir = "02_functions"
+test = false
+hint = """
+이번에는 함수 *선언*은 괜찮지만, 함수를 호출하는 부분에 문제가 있어요."""
+
+[[exercises]]
+name = "functions4"
+dir = "02_functions"
+test = false
+hint = """
+에러 메시지가 `sale_price` 함수를 가리키며 `->` 뒤에 타입이 필요하다고
+말하고 있어요. 이곳이 함수의 반환 타입이 와야 하는 곳이에요.
+`is_even` 함수를 예시로 참고해보세요!"""
+
+[[exercises]]
+name = "functions5"
+dir = "02_functions"
+test = false
+hint = """
+이것은 한 글자를 제거하면 고칠 수 있는 매우 흔한 오류에요.
+Rust가 표현식(expression)과 구문(statement)을 구분하기 때문에 발생해요:
+표현식은 피연산자에 기반한 값을 반환하고, 구문은 단순히 C/C++의 `void`처럼
+동작하는 `()` 타입을 반환해요.
+
+`square` 함수에서 `i32` 타입의 값을 반환하고 싶지만, `()` 타입을
+반환하고 있어요.
+
+두 가지 해결 방법이 있어요:
+1. `num * num;` 앞에 `return` 키워드를 추가하기
+2. `num * num` 뒤의 세미콜론 `;`을 제거하기"""
+
+# IF
+
+[[exercises]]
+name = "if1"
+dir = "03_if"
+hint = """
+원한다면 한 줄로 작성할 수도 있어요!
+
+다른 언어에서의 비슷한 예시:
+- C(++)에서는: `a > b ? a : b`
+- Python에서는: `a if a > b else b`
+
+Rust에서 기억할 점:
+- `if` 조건에 괄호를 감싸지 않아도 돼요
+- `if`/`else` 조건문은 표현식(expression)이에요
+- 각 조건 뒤에는 `{}` 블록이 와요"""
+
+[[exercises]]
+name = "if2"
+dir = "03_if"
+hint = """
+첫 번째 컴파일러 오류에 대해, Rust에서는 각 조건 블록이 같은 타입을
+반환하는 것이 중요해요!
+
+테스트를 통과하려면, 다른 입력 값을 확인하는 몇 가지 조건이 필요해요.
+테스트를 읽어서 무엇을 기대하는지 확인해보세요."""
+
+[[exercises]]
+name = "if3"
+dir = "03_if"
+hint = """
+Rust에서는 `if` 표현식의 모든 분기(arm)가 같은 타입의 값을 반환해야 해요.
+모든 분기에서 타입이 일관되게 해주세요."""
+
+# QUIZ 1
+
+[[exercises]]
+name = "quiz1"
+dir = "quizzes"
+hint = "이번에는 힌트가 없어요 ;)"
+
+# PRIMITIVE TYPES
+
+[[exercises]]
+name = "primitive_types1"
+dir = "04_primitive_types"
+test = false
+hint = """
+Rust에서 불리언은 앞에 `!` 연산자를 사용해서 부정할 수 있어요.
+예시: `!true == false`
+이것은 불리언 변수에도 동일하게 작동해요."""
+
+[[exercises]]
+name = "primitive_types2"
+dir = "04_primitive_types"
+test = false
+hint = "이번에는 힌트가 없어요 ;)"
+
+[[exercises]]
+name = "primitive_types3"
+dir = "04_primitive_types"
+test = false
+hint = """
+100개의 항목을 일일이 입력하지 않고도 특정 크기로 배열을 초기화하는
+단축 방법이 있어요 (물론 원한다면 직접 입력해도 돼요!).
+
+예를 들어, 이렇게 할 수 있어요:
+```
+let array = ["Are we there yet?"; 100];
+```
+
+보너스: `a.len() >= 100`에서 `true`를 반환할 수 있는 다른 방법에는
+어떤 것들이 있을까요?"""
+
+[[exercises]]
+name = "primitive_types4"
+dir = "04_primitive_types"
+hint = """
+Rust 책의 '소유권 이해하기 -> 슬라이스 -> 기타 슬라이스' 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch04-03-slices.html
+슬라이스에 넣고 싶은 배열 항목의 시작 인덱스와 끝 인덱스(+1)를 사용하세요.
+
+두 번째 인자가 참조인데 `assert_eq!`의 첫 번째 인자에 왜 참조를 위한
+앰퍼샌드(&)가 없는지 궁금하다면, nomicon의 강제 변환(coercion) 챕터를
+참고하세요:
+https://doc.rust-lang.org/nomicon/coercions.html"""
+
+[[exercises]]
+name = "primitive_types5"
+dir = "04_primitive_types"
+test = false
+hint = """
+Rust 책의 '데이터 타입 -> 튜플 타입' 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
+특히 구조 분해(destructuring)에 대한 부분을 보세요 (섹션의 끝에서 두 번째
+예시).
+
+`name`과 `age`를 튜플의 적절한 부분에 바인딩하는 패턴을 만들어야 해요."""
+
+[[exercises]]
+name = "primitive_types6"
+dir = "04_primitive_types"
+hint = """
+여기서 튜플에 대해 구조 분해 `let`을 사용할 수도 있지만, 대신 인덱싱으로
+접근해보세요. Rust 책의 '데이터 타입 -> 튜플 타입' 섹션의 마지막 예시에
+설명되어 있어요:
+https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
+이제 도구 상자에 또 하나의 도구가 생겼네요!"""
+
+# VECS
+
+[[exercises]]
+name = "vecs1"
+dir = "05_vecs"
+hint = """
+Rust에서 벡터(Vector)를 정의하는 방법은 두 가지가 있어요.
+1. 하나는 `Vec::new()` 함수를 사용해서 새 벡터를 만들고 `push()` 메서드로
+   채우는 방법이에요.
+2. 두 번째는 `vec![]` 매크로를 사용해서 대괄호 안에 요소를 정의하는
+   방법이에요. 초기 값을 정확히 알고 있을 때 이 방법이 더 간단해요.
+
+더 알아보려면 Rust 책의 이 챕터를 참고하세요:
+https://doc.rust-lang.org/book/ch08-01-vectors.html"""
+
+[[exercises]]
+name = "vecs2"
+dir = "05_vecs"
+hint = """
+벡터에 새로운 요소를 추가하려면 `.push()` 메서드를 사용하세요."""
+
+# MOVE SEMANTICS
+
+[[exercises]]
+name = "move_semantics1"
+dir = "06_move_semantics"
+hint = """
+벡터에 요소를 push하는 줄에서 "`vec`을 가변으로 빌릴 수 없습니다.
+가변으로 선언되지 않았습니다"라는 오류가 나왔죠?
+
+이것을 고치려면 키워드 하나를 추가해야 하는데, 벡터에 push하는 줄(오류가
+발생한 줄)이 아닌 곳에 추가해야 해요.
+
+`fill_vec()`을 호출한 후에 `vec0`에 접근해보세요. 무슨 일이 일어나는지 확인해보세요!"""
+
+[[exercises]]
+name = "move_semantics2"
+dir = "06_move_semantics"
+hint = """
+이 연습문제를 처음 실행하면 "이동된 값의 빌림(borrow of moved value)"이라는
+오류를 볼 수 있어요. Rust에서는 인자가 함수에 전달되고 명시적으로 반환되지
+않으면, 원래 변수를 더 이상 사용할 수 없어요. 이것을 변수를 "이동(move)"한다고
+해요. `vec0`을 `fill_vec`에 전달하면, `vec1`으로 "이동"되어서 더 이상
+`vec0`에 접근할 수 없어요.
+
+`vec0`에 있는 데이터의 별도 복사본을 만들어서 `fill_vec`에 전달할 수 있어요.
+이것을 Rust에서는 클로닝(cloning)이라고 해요."""
+
+[[exercises]]
+name = "move_semantics3"
+dir = "06_move_semantics"
+hint = """
+이전 연습문제와의 차이점은 `fn fill_vec`의 첫 번째 줄에 있던
+`let mut vec = vec;`가 더 이상 없다는 거에요. 그 줄을 다시 추가하는 대신,
+기존 바인딩을 불변에서 가변으로 바꾸는 한 곳에 `mut`를 추가할 수 있어요 :)"""
+
+[[exercises]]
+name = "move_semantics4"
+dir = "06_move_semantics"
+hint = """
+각 가변 참조가 스코프에 있는 범위에 대해 신중하게 생각해보세요.
+가변 참조를 가져온 직후에 `x`의 값을 업데이트하면 도움이 될까요?
+Rust 책의 '참조와 빌림' 섹션에서 '가변 참조'에 대해 더 읽어보세요:
+https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html#mutable-references."""
+
+[[exercises]]
+name = "move_semantics5"
+dir = "06_move_semantics"
+test = false
+hint = """
+답을 찾으려면 Rust 책의 "참조와 빌림" 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+
+첫 번째 문제는 `get_char`가 문자열의 소유권을 가져간다는 거에요. 그래서
+`data`가 이동되어 `string_uppercase`에서 사용할 수 없어요. `data`가 먼저
+`get_char`로 이동되므로, `string_uppercase`가 데이터를 조작할 수 없어요.
+
+이것을 고친 후에는, `string_uppercase`의 함수 시그니처도 조정해야 해요."""
+
+# STRUCTS
+
+[[exercises]]
+name = "structs1"
+dir = "07_structs"
+hint = """
+Rust에는 구조체(struct) 타입이 하나 이상 있어요. 실제로 세 가지가 있고,
+모든 변형은 관련 데이터를 함께 묶는 데 사용돼요.
+
+일반 구조체(regular struct)가 있어요. 필드에 저장된 관련 데이터의 이름 있는
+컬렉션이에요.
+
+튜플 구조체(tuple struct)는 기본적으로 이름이 있는 튜플이에요.
+
+마지막으로 유닛 구조체(unit struct)가 있어요. 필드가 없고 제네릭에 유용해요.
+
+이 연습문제에서는 각 종류를 하나씩 완성하고 구현해야 해요.
+Rust 책에서 구조체에 대해 더 읽어보세요:
+https://doc.rust-lang.org/book/ch05-01-defining-structs.html"""
+
+[[exercises]]
+name = "structs2"
+dir = "07_structs"
+hint = """
+구조체의 인스턴스를 만드는 것은 쉬워요. 필드에 값을 할당하기만 하면 돼요.
+
+하지만 구조체를 인스턴스화할 때 사용할 수 있는 단축 방법이 있어요.
+Rust 책에서 더 알아보세요:
+https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax"""
+
+[[exercises]]
+name = "structs3"
+dir = "07_structs"
+hint = """
+`is_international`의 경우: 패키지를 국제 배송으로 만드는 것은 무엇일까요?
+거쳐가는 장소와 관련이 있는 것 같지 않나요?
+
+`get_fees`의 경우: 이 메서드는 추가 인자를 받는데, `Package` 구조체에
+이것과 관련된 필드가 있나요?
+
+메서드 구현에 대해 더 알아보려면 Rust 책을 참고하세요:
+https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
+
+# ENUMS
+
+[[exercises]]
+name = "enums1"
+dir = "08_enums"
+test = false
+hint = "이번에는 힌트가 없어요 ;)"
+
+[[exercises]]
+name = "enums2"
+dir = "08_enums"
+test = false
+hint = """
+익명 구조체, 구조체, 단일 문자열, 튜플, 데이터 없음 등 서로 다른 타입을 가진
+다양한 변형(variant)을 가진 열거형(enum)을 만들 수 있어요."""
+
+[[exercises]]
+name = "enums3"
+dir = "08_enums"
+hint = """
+첫 번째 단계로, 코드가 오류 없이 컴파일되도록 열거형을 정의하세요.
+
+그런 다음, `process()`에서 match 표현식을 만드세요.
+
+변형의 값을 얻으려면 match 표현식에서 일부 메시지 변형을 구조 분해해야
+한다는 점을 주의하세요."""
+
+# STRINGS
+
+[[exercises]]
+name = "strings1"
+dir = "09_strings"
+test = false
+hint = """
+`current_favorite_color` 함수는 현재 `'static` 라이프타임을 가진 문자열
+슬라이스를 반환하고 있어요. 문자열 데이터가 코드 자체에 있기 때문이에요
+-- 파일이나 사용자 입력, 다른 프로그램에서 온 것이 아니라 -- 프로그램이
+살아있는 동안 존재해요.
+
+하지만 여전히 문자열 슬라이스에요. 문자열 슬라이스에서 `String`을 만드는
+방법이 있어요. Rust 책의 문자열 챕터에서 다루는 변환 방법과 `From`
+트레이트를 사용하는 방법이 있어요."""
+
+[[exercises]]
+name = "strings2"
+dir = "09_strings"
+test = false
+hint = """
+네, `word`에 바인딩된 값을 `String` 대신 문자열 슬라이스로 바꾸면 정말 쉽게
+고칠 수 있겠죠? 하지만 `if` 문에 한 글자를 추가해서 `String`을 문자열
+슬라이스로 강제 변환하는 방법도 있어요.
+
+참고: 이런 종류의 참조 변환이 어떻게 작동하는지 알고 싶다면, Rust 책의
+스마트 포인터 챕터에서 이 부분을 먼저 읽어볼 수 있어요:
+https://doc.rust-lang.org/book/ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods"""
+
+[[exercises]]
+name = "strings3"
+dir = "09_strings"
+hint = """
+문자열을 위한 유용한 표준 라이브러리 함수들이 많이 있어요. 몇 가지를
+사용해봅시다:
+https://doc.rust-lang.org/std/string/struct.String.html#method.trim
+
+`compose_me` 메서드의 경우: `format!` 매크로를 사용하거나, 문자열 슬라이스를
+소유된 문자열(owned string)로 변환한 후 자유롭게 확장할 수 있어요.
+
+`replace_me` 메서드의 경우, `replace` 메서드를 확인해보세요:
+https://doc.rust-lang.org/std/string/struct.String.html#method.replace"""
+
+[[exercises]]
+name = "strings4"
+dir = "09_strings"
+test = false
+hint = """
+`main` 함수에서 `placeholder`를 `string` 또는 `string_slice`로 바꾸세요.
+
+예시:
+`placeholder("blue");`는
+`string_slice("blue");`가 되어야 해요.
+왜냐하면 "blue"는 `String`이 아닌 `&str`이기 때문이에요."""
+
+# MODULES
+
+[[exercises]]
+name = "modules1"
+dir = "10_modules"
+test = false
+hint = """
+Rust에서는 기본적으로 모든 것이 비공개(private)에요. 하지만 무언가를
+공개(public)로 만들기 위해 사용할 수 있는 키워드가 있어요!"""
+
+[[exercises]]
+name = "modules2"
+dir = "10_modules"
+test = false
+hint = """
+`delicious_snacks` 모듈은 내부 구조(`fruits`와 `veggies` 모듈 및 관련 상수)와
+다른 외부 인터페이스를 제공하려고 해요. `use` 문을 완성해서 `main`에서의
+사용에 맞추고, 두 상수 모두에 빠진 키워드 하나를 찾으세요.
+
+Rust 책에서 더 알아보세요:
+https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#re-exporting-names-with-pub-use"""
+
+[[exercises]]
+name = "modules3"
+dir = "10_modules"
+test = false
+hint = """
+`UNIX_EPOCH`와 `SystemTime`은 `std::time` 모듈에 선언되어 있어요. 이 둘을
+스코프로 가져오는 `use` 문을 추가하세요. 중첩 경로(nested path)를 사용하면
+한 줄로 둘 다 가져올 수 있어요."""
+
+# HASHMAPS
+
+[[exercises]]
+name = "hashmaps1"
+dir = "11_hashmaps"
+hint = """
+과일의 수는 최소 5개여야 하고, 최소 3가지 다른 종류의 과일을 넣어야 해요."""
+
+[[exercises]]
+name = "hashmaps2"
+dir = "11_hashmaps"
+hint = """
+`HashMap`의 `entry()`와 `or_insert()` 메서드를 사용해서 이것을 달성하세요.
+
+Rust 책에서 더 알아보세요:
+https://doc.rust-lang.org/book/ch08-03-hash-maps.html#only-inserting-a-value-if-the-key-has-no-value"""
+
+[[exercises]]
+name = "hashmaps3"
+dir = "11_hashmaps"
+hint = """
+힌트 1: `HashMap`의 `entry()`와 `or_default()` 메서드를 사용해서 팀이 아직
+        테이블에 없으면 `TeamScores`의 기본값을 삽입하세요.
+
+힌트 2: 주어진 키에 대한 항목이 이미 있으면, `entry()`가 반환한 값을
+        기존 값에 기반해서 업데이트할 수 있어요.
+
+Rust 책에서 더 알아보세요:
+https://doc.rust-lang.org/book/ch08-03-hash-maps.html#updating-a-value-based-on-the-old-value"""
+
+# QUIZ 2
+
+[[exercises]]
+name = "quiz2"
+dir = "quizzes"
+hint = "`+` 연산자는 `String`과 `&str`을 연결(concatenate)할 수 있어요."
+
+# OPTIONS
+
+[[exercises]]
+name = "options1"
+dir = "12_options"
+hint = """
+Option은 내부 값이 있는 `Some` 값이거나, 내부 값이 없는 `None` 값일 수 있어요.
+
+내부 값에 접근하는 방법은 여러 가지가 있어요. `unwrap`을 사용하거나 패턴
+매칭을 할 수 있어요. unwrap이 가장 쉽지만, 나중에 패닉이 발생하지 않도록
+안전하게 하려면 어떻게 해야 할까요?"""
+
+[[exercises]]
+name = "options2"
+dir = "12_options"
+hint = """
+다음을 확인해보세요:
+
+- https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html
+- https://doc.rust-lang.org/rust-by-example/flow_control/while_let.html
+
+`Option`은 if-let과 while-let 문에서 중첩될 수 있다는 것을 기억하세요.
+
+예시: `if let Some(Some(x)) = y`
+
+`Option::flatten`도 참고하세요."""
+
+[[exercises]]
+name = "options3"
+dir = "12_options"
+test = false
+hint = """
+컴파일러가 `match` 문에서 부분 이동(partial move)이 발생했다고 해요. 이것을
+어떻게 피할 수 있을까요? 컴파일러가 필요한 수정을 보여주고 있어요.
+
+컴파일러가 제안한 대로 수정한 후, 관련 문서 페이지를 읽어보세요:
+https://doc.rust-lang.org/std/keyword.ref.html"""
+
+# ERROR HANDLING
+
+[[exercises]]
+name = "errors1"
+dir = "13_error_handling"
+hint = """
+`Ok`과 `Err`은 `Result`의 두 변형이에요. 그래서 테스트가 말하는 것은
+`generate_nametag_text`가 `Option` 대신 `Result`를 반환해야 한다는 거에요.
+
+이 변경을 하려면:
+  - 함수 시그니처의 반환 타입을 `Ok(String)`과 `Err(String)` 변형을 가질 수
+    있는 `Result<String, String>`으로 업데이트하세요
+  - 함수 본문에서 현재 `Some(…)`을 반환하는 곳을 `Ok(…)`를 반환하도록
+    변경하세요
+  - 함수 본문에서 현재 `None`을 반환하는 곳을 `Err(에러 메시지)`를 반환하도록
+    변경하세요"""
+
+[[exercises]]
+name = "errors2"
+dir = "13_error_handling"
+hint = """
+이것을 처리하는 한 가지 방법은 `item_quantity.parse::<i32>()`에 대해
+`Ok(something)`과 `Err(something)` 케이스를 가진 `match` 문을 사용하는 거에요.
+
+하지만 이 패턴은 Rust에서 매우 흔해서, match 문이 하는 것과 거의 같은 일을
+해주는 `?` 연산자가 있어요!
+
+"오류 처리" 챕터의 이 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator"""
+
+[[exercises]]
+name = "errors3"
+dir = "13_error_handling"
+test = false
+hint = """
+다른 함수가 `Result`를 반환할 수 있다면, `main`은 왜 안 될까요? `main` 함수에서
+`Result<(), ErrorType>` 같은 것을 반환하는 것은 꽤 일반적인 관례에요.
+
+유닛 타입 `()`가 있는 이유는 긍정적인 결과 측면에서 실제로 필요한 것이
+없기 때문이에요."""
+
+[[exercises]]
+name = "errors4"
+dir = "13_error_handling"
+hint = """
+`PositiveNonzeroInteger::new`는 항상 새 인스턴스를 만들고 `Ok` 결과를
+반환하고 있어요. 하지만 검사를 수행하고, 검사가 실패하면 `Err`을 반환하고,
+모든 것이... 괜찮다고 판단될 때만 `Ok`을 반환해야 해요 :)"""
+
+[[exercises]]
+name = "errors5"
+dir = "13_error_handling"
+test = false
+hint = """
+`main` 함수 내에서 `?` 연산자를 사용해 전파되는 두 가지 다른 `Result` 타입이
+있어요. 둘 다 허용하는 `main` 함수의 반환 타입을 어떻게 선언할까요?
+
+내부적으로 `?` 연산자는 에러 값에 `From::from`을 호출해서 박스된 트레이트
+객체인 `Box<dyn Error>`로 변환해요. 이 박스된 트레이트 객체는 다형적이고,
+모든 에러가 `Error` 트레이트를 구현하기 때문에, 하나의 `Box` 객체에 다양한
+에러를 담을 수 있어요.
+
+Rust 책의 이 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator
+
+에러 박싱에 대해 더 읽어보세요:
+https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/boxing_errors.html
+
+박스된 에러와 `?` 연산자 사용에 대해 더 읽어보세요:
+https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html"""
+
+[[exercises]]
+name = "errors6"
+dir = "13_error_handling"
+hint = """
+이 연습문제는 이전 연습문제에서 완성된 `PositiveNonzeroInteger` 버전을
+사용해요.
+
+`TODO`가 변경을 요청하는 줄 아래에, `Result`의 `map_err()` 메서드를 사용해서
+한 타입의 에러를 다른 타입으로 변환하는 예시가 있어요. `parse()`의 `Result`에
+비슷한 것을 사용해보세요. 그런 다음 `?` 연산자를 사용해서 일찍 반환할 수
+있어요.
+
+`std::result` 문서에서 `map_err()`에 대해 더 읽어보세요:
+https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err"""
+
+# Generics
+
+[[exercises]]
+name = "generics1"
+dir = "14_generics"
+test = false
+hint = """
+Rust의 벡터는 제네릭을 사용해서 어떤 타입이든 동적 크기 배열을 만들 수 있어요.
+벡터 `numbers`의 타입이 `Vec<T>`이면, `T` 타입의 값만 push할 수 있어요.
+push하기 전에 `into()`를 사용하면, 컴파일러에게 `n1`과 `n2`를 `T`로 변환해
+달라고 요청하는 거에요. 하지만 컴파일러는 아직 `T`가 무엇인지 모르기 때문에
+타입 어노테이션이 필요해요.
+
+`u8`과 `i8`은 둘 다 `i16`, `i32`, `i64`로 변환될 수 있어요. 벡터의 제네릭
+타입으로 하나를 선택하세요."""
+
+[[exercises]]
+name = "generics2"
+dir = "14_generics"
+hint = """
+Rust 책의 관련 섹션:
+https://doc.rust-lang.org/book/ch10-01-syntax.html#in-method-definitions"""
+
+# TRAITS
+
+[[exercises]]
+name = "traits1"
+dir = "15_traits"
+hint = """
+Rust 책에서 트레이트에 대해 더 알아보세요:
+https://doc.rust-lang.org/book/ch10-02-traits.html
+
+`+` 연산자는 `String`과 `&str`을 연결할 수 있어요."""
+
+[[exercises]]
+name = "traits2"
+dir = "15_traits"
+hint = """
+트레이트가 `self`의 소유권을 가져가고 `Self`를 반환하는 것을 주목하세요.
+
+트레이트에서 `append_bar`의 시그니처가 `self`를 인자로 받지만,
+구현에서는 `mut self`를 대신 받을 수 있어요. 어차피 값이 소유되기
+때문에 가능해요."""
+
+[[exercises]]
+name = "traits3"
+dir = "15_traits"
+hint = """
+트레이트는 함수에 대한 기본 구현을 가질 수 있어요. 트레이트를 구현하는
+데이터 타입은 함수를 직접 구현하지 않기로 선택하면 이 기본 버전을 사용할 수
+있어요.
+
+Rust 책의 관련 섹션:
+https://doc.rust-lang.org/book/ch10-02-traits.html#default-implementations"""
+
+[[exercises]]
+name = "traits4"
+dir = "15_traits"
+hint = """
+구체적인 타입 대신 트레이트를 매개변수로 사용할 수 있어요. `???`를
+`impl [여기에 뭐가 올까요?]`로 바꿔보세요.
+
+Rust 책의 관련 섹션:
+https://doc.rust-lang.org/book/ch10-02-traits.html#traits-as-parameters"""
+
+[[exercises]]
+name = "traits5"
+dir = "15_traits"
+hint = """
+매개변수가 여러 트레이트를 구현하도록 하려면 '+ 구문'을 사용하세요. `???`를
+'impl [여기에 뭐가 올까요?] + [여기에 뭐가 올까요?]'로 바꿔보세요.
+
+Rust 책의 관련 섹션:
+https://doc.rust-lang.org/book/ch10-02-traits.html#specifying-multiple-trait-bounds-with-the--syntax"""
+
+# QUIZ 3
+
+[[exercises]]
+name = "quiz3"
+dir = "quizzes"
+hint = """
+이 도전의 최선의 해결책을 찾으려면, 트레이트에 대한 지식, 특히
+"트레이트 바운드 구문"을 떠올려야 해요:
+https://doc.rust-lang.org/book/ch10-02-traits.html#trait-bound-syntax
+
+구현 블록에 트레이트 바운드를 지정하는 방법:
+`impl<T: Trait1 + Trait2 + …> for Foo<T> { … }`
+
+이것이 필요할 수 있어요:
+`use std::fmt::Display;`"""
+
+# LIFETIMES
+
+[[exercises]]
+name = "lifetimes1"
+dir = "16_lifetimes"
+hint = """
+컴파일러가 안내하도록 하세요. 도움이 필요하면 Rust 책도 참고하세요:
+https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html"""
+
+[[exercises]]
+name = "lifetimes2"
+dir = "16_lifetimes"
+test = false
+hint = """
+제네릭 라이프타임 `'a`는 `x`와 `y`의 라이프타임 중 더 작은 것과 같은
+구체적인 라이프타임을 갖게 된다는 것을 기억하세요.
+
+내부 블록을 유지하면서 원하는 결과를 달성하는 최소 두 가지 방법이 있어요:
+1. `string2` 선언을 이동해서 `string1`과 같은 기간 동안 살아있게 하기
+   (`result`는 어떻게 선언되어 있나요?)
+2. `println!`을 내부 블록으로 이동하기"""
+
+[[exercises]]
+name = "lifetimes3"
+dir = "16_lifetimes"
+test = false
+hint = """컴파일러가 안내하도록 하세요 :)"""
+
+# TESTS
+
+[[exercises]]
+name = "tests1"
+dir = "17_tests"
+hint = """
+`assert!`는 인자가 필요한 매크로에요. 인자의 값에 따라 `assert!`가 아무것도
+하지 않거나 (이 경우 테스트가 통과) `assert!`가 패닉을 일으켜요
+(이 경우 테스트가 실패).
+
+그러니 `assert!`에 다른 값들을 넣어보고 어떤 것이 컴파일되고, 어떤 것이
+통과하고, 어떤 것이 실패하는지 확인해보세요 :)
+
+`false`를 확인하고 싶다면, `!`를 사용해서 확인하는 것의 결과를 부정할 수
+있어요. 예: `assert!(!…)`."""
+
+[[exercises]]
+name = "tests2"
+dir = "17_tests"
+hint = """
+`assert_eq!`는 두 개의 인자를 받아서 비교하는 매크로에요. 같은 두 값을
+넣어보세요! 다른 두 인자를 넣어보세요! 어떤 인자가 먼저 오고 어떤 인자가
+나중에 오는지 바꿔보세요!"""
+
+[[exercises]]
+name = "tests3"
+dir = "17_tests"
+hint = """
+`Rectangle::new` 메서드가 음수 값에 대해 패닉을 일으킬 것으로 예상해요.
+
+이것을 처리하려면, 테스트 함수에 특별한 속성(attribute)을 추가해야 해요.
+
+문서를 참고하세요:
+https://doc.rust-lang.org/book/ch11-01-writing-tests.html#checking-for-panics-with-should_panic"""
+
+# STANDARD LIBRARY TYPES
+
+[[exercises]]
+name = "iterators1"
+dir = "18_iterators"
+hint = """
+반복자(iterator)는 컬렉션의 모든 요소를 순회하지만, 요소가 다 떨어지면
+어떻게 될까요? 여기서 무엇을 기대해야 할까요? 막히면 다음을 참고하세요:
+https://doc.rust-lang.org/std/iter/trait.Iterator.html"""
+
+[[exercises]]
+name = "iterators2"
+dir = "18_iterators"
+hint = """
+`capitalize_first`:
+
+변수 `first`는 `char`에요. 올바른 `String`을 반환하려면 대문자로 변환해서
+`chars`의 나머지 문자들에 추가해야 해요.
+
+`chars`의 나머지 문자들은 `as_str` 메서드를 사용해서 문자열 슬라이스로
+볼 수 있어요.
+
+`char` 문서에 유용한 메서드가 많이 있어요.
+https://doc.rust-lang.org/std/primitive.char.html
+
+`char::to_uppercase`를 사용하세요. `String`으로 변환할 수 있는 반복자를
+반환해요.
+
+`capitalize_words_vector`:
+
+슬라이스에서 반복자를 만드세요. `capitalize_first` 함수를 적용해서 반복된
+값들을 변환하세요. 반복자를 `collect`하는 것을 잊지 마세요.
+
+`capitalize_words_string`:
+
+이것은 놀랍게도 이전 해결책과 매우 비슷해요. `collect`는 매우 강력하고
+범용적이에요. Rust는 원하는 타입만 알면 돼요."""
+
+[[exercises]]
+name = "iterators3"
+dir = "18_iterators"
+hint = """
+`divide` 함수는 제수가 0이거나 균등한 나눗셈이 불가능할 때 올바른 에러를
+반환해야 해요.
+
+`division_results` 변수는 컬렉션 타입으로 collect되어야 해요.
+
+`result_with_list` 함수는 성공 케이스가 정수 벡터이고 실패 케이스가
+`DivisionError`인 단일 `Result`를 반환해야 해요.
+
+`list_of_results` 함수는 결과들의 벡터를 반환해야 해요.
+
+`collect()`에서 `FromIterator` 트레이트가 어떻게 사용되는지 참고하세요:
+https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
+이 트레이트는 정말 강력해요! 이 연습문제의 해결책을 훨씬 쉽게 만들어줄 수
+있어요."""
+
+[[exercises]]
+name = "iterators4"
+dir = "18_iterators"
+hint = """
+명령형 언어에서는 가변 변수를 업데이트하는 `for` 루프를 작성할 수 있어요.
+또는 재귀와 match 절을 활용하는 코드를 작성할 수도 있어요. Rust에서는
+범위(range)와 반복자를 사용해서 팩토리얼을 우아하게 계산하는 또 다른
+함수형 접근 방식을 사용할 수 있어요.
+
+`fold`와 `rfold` 메서드를 확인해보세요!"""
+
+[[exercises]]
+name = "iterators5"
+dir = "18_iterators"
+hint = """
+`std::iter::Iterator` 트레이트의 문서에 여기서 도움이 될 많은 메서드가
+있어요.
+
+`count_collection_iterator`의 `collection` 변수는 `HashMap`들의
+슬라이스에요. 반복자 메서드를 사용하려면 반복자로 변환해야 해요.
+
+`fold` 메서드가 `count_collection_iterator` 함수에서 유용할 수 있어요.
+
+추가 도전으로, `Iterator` 문서를 참고해서 `fold`를 사용하는 것보다
+코드를 더 간결하게 만들 수 있는 다른 메서드를 찾아보세요."""
+
+# SMART POINTERS
+
+[[exercises]]
+name = "box1"
+dir = "19_smart_pointers"
+hint = """
+컴파일러의 메시지가 도움이 될 거에요: 재귀 타입을 다룰 때 실제 타입의 값을
+저장할 수 없으므로, 값에 대한 참조(포인터)를 저장해야 해요.
+
+따라서 `List`를 `Box` 안에 넣어야 해요. Rust 책에서 더 자세히 알아보세요:
+https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-boxes
+
+빈 리스트를 만드는 것은 꽤 간단해야 해요 (힌트: 테스트를 읽어보세요).
+
+비어있지 않은 리스트의 경우, `Cons` 리스트 빌더를 사용하고 싶다는 것을
+기억하세요. 현재 리스트는 정수(`i32`) 리스트이지만, 정의를 바꿔서 다른
+타입도 시도해보세요!"""
+
+[[exercises]]
+name = "rc1"
+dir = "19_smart_pointers"
+hint = """
+이것은 `Rc<T>` 타입을 사용하는 간단한 연습문제에요. 각 `Planet`은 `Sun`의
+소유권을 가지고, `Rc::clone()`을 사용해서 `Sun`의 참조 카운트를 증가시켜요.
+
+`drop()`을 사용해서 `Planet`들을 개별적으로 스코프 밖으로 이동시키면,
+참조 카운트가 줄어들어요.
+
+결국 `Sun`은 자기 자신에 대한 하나의 참조만 다시 가지게 돼요.
+
+더 알아보세요: https://doc.rust-lang.org/book/ch15-04-rc.html
+
+안타깝게도, 명왕성은 더 이상 행성으로 간주되지 않아요 :("""
+
+[[exercises]]
+name = "arc1"
+dir = "19_smart_pointers"
+test = false
+hint = """
+`numbers` 벡터로부터 `shared_numbers`를 `Arc`로 만드세요. 그런 다음,
+`numbers`의 복사본을 만드는 것을 피하려면, 루프 안에서 하지만 여전히 메인
+스레드에서 `child_numbers`를 만들어야 해요.
+
+`child_numbers`는 숫자의 스레드-로컬 복사본이 아닌 숫자의 `Arc`의
+클론이어야 해요.
+
+기본 개념을 이해하면 간단한 연습문제이지만, 너무 어렵다면 Rust 책의
+16장 전체를 읽어보는 것을 고려하세요:
+https://doc.rust-lang.org/book/ch16-00-concurrency.html"""
+
+[[exercises]]
+name = "cow1"
+dir = "19_smart_pointers"
+hint = """
+`Cow`가 이미 데이터를 소유하고 있다면, `to_mut()`이 호출될 때 클론할
+필요가 없어요.
+
+`Cow` 타입의 문서를 확인해보세요:
+https://doc.rust-lang.org/std/borrow/enum.Cow.html"""
+
+# THREADS
+
+[[exercises]]
+name = "threads1"
+dir = "20_threads"
+test = false
+hint = """
+`JoinHandle`은 생성된 스레드로부터 반환되는 구조체에요:
+https://doc.rust-lang.org/std/thread/fn.spawn.html
+
+멀티스레드 애플리케이션의 어려운 점은 메인 스레드가 생성된 스레드보다
+먼저 끝날 수 있다는 거에요.
+https://doc.rust-lang.org/book/ch16-01-threads.html#waiting-for-all-threads-to-finish-using-join-handles
+
+`JoinHandle`을 사용해서 각 스레드가 끝날 때까지 기다리고 결과를 수집하세요.
+
+https://doc.rust-lang.org/std/thread/struct.JoinHandle.html"""
+
+[[exercises]]
+name = "threads2"
+dir = "20_threads"
+test = false
+hint = """
+`Arc`는 **불변** 데이터에 대한 안전하고 공유된 접근을 허용하는 원자적 참조
+카운트 포인터에요. 하지만 `jobs_done`의 수를 *변경*하고 싶으므로, 한 번에
+하나의 스레드만 데이터를 변경할 수 있게 하는 또 다른 타입도 사용해야 해요.
+Rust 책의 이 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch16-03-shared-state.html#atomic-reference-counting-with-arct
+
+더 많은 힌트를 원하면 계속 읽어보세요 :)
+
+이제 `main`의 시작 부분에 `Arc<Mutex<JobStatus>>`가 있나요? 이렇게요:
+```
+let status = Arc::new(Mutex::new(JobStatus { jobs_done: 0 }));
+```
+
+Rust 책의 다음 예시와 비슷해요:
+https://doc.rust-lang.org/book/ch16-03-shared-state.html#sharing-a-mutext-between-multiple-threads"""
+
+[[exercises]]
+name = "threads3"
+dir = "20_threads"
+hint = """
+스레드 간 동시성을 처리하는 또 다른 방법은 `mpsc`(다중 생산자, 단일 소비자)
+채널을 사용해서 통신하는 거에요.
+
+송신 단과 수신 단이 모두 있으면, 한 스레드에서 값을 보내고 다른 스레드에서
+받을 수 있어요.
+
+원래 송신 단의 `clone()`을 사용해서 복제하면 다중 생산자가 가능해요.
+
+Rust 책의 관련 섹션:
+https://doc.rust-lang.org/book/ch16-02-message-passing.html"""
+
+# MACROS
+
+[[exercises]]
+name = "macros1"
+dir = "21_macros"
+test = false
+hint = """
+매크로를 호출할 때는 일반 함수 호출과 비교해서 특별한 것을 추가해야 해요."""
+
+[[exercises]]
+name = "macros2"
+dir = "21_macros"
+test = false
+hint = """
+매크로는 어디서 무엇을 사용할 수 있는지에 대해 Rust의 나머지 부분과 같은
+규칙을 따르지 않아요.
+
+Rust의 다른 것들과 달리, "매크로를 정의하는 위치"와 "사용하는 위치"의
+순서가 실제로 중요해요."""
+
+[[exercises]]
+name = "macros3"
+dir = "21_macros"
+test = false
+hint = """
+모듈 외부에서 매크로를 사용하려면, 매크로를 부모로 끌어올리기 위해
+모듈에 특별한 작업을 해야 해요."""
+
+[[exercises]]
+name = "macros4"
+dir = "21_macros"
+test = false
+hint = """
+이것을 컴파일하려면 한 글자만 추가하면 돼요.
+
+매크로가 작성되는 방식에서, 각 "매크로 팔(arm)" 사이에 무언가를 구분자로
+넣어야 해요.
+
+여기서 매크로 연습문제는 이것이 전부이지만, Rust 매크로로 할 수 있는 것의
+표면만 겨우 긁은 거에요. 더 자세한 소개를 원한다면 'The Little Book of
+Rust Macros'를 읽어보세요:
+https://veykril.github.io/tlborm/"""
+
+#  CLIPPY
+
+[[exercises]]
+name = "clippy1"
+dir = "22_clippy"
+test = false
+strict_clippy = true
+hint = """
+Rust는 일부 긴 또는 무한 정밀도 수학 상수의 최고 정밀도 버전을 Rust 표준
+라이브러리에 저장하고 있어요:
+https://doc.rust-lang.org/stable/std/f32/consts/index.html
+
+특정 수학 상수에 대해 자체 근사값을 사용하고 싶을 수 있지만, clippy는 그런
+부정확한 수학 상수를 잠재적 오류의 원인으로 인식해요.
+
+컴파일 출력에서 Clippy 경고의 제안을 확인하고 `std::f32::consts`의 적절한
+대체 상수를 사용하세요."""
+
+[[exercises]]
+name = "clippy2"
+dir = "22_clippy"
+test = false
+strict_clippy = true
+hint = """
+`Option` 값에 대한 `for` 루프는 `if-let` 문으로 더 명확하게 표현할 수 있어요.
+
+이 연습문제를 풀기 위해 필수는 아니지만, `Option`에 대한 반복이 언제 유용한지
+관심이 있다면 다음 문서 섹션을 읽어보세요:
+https://doc.rust-lang.org/std/option/#iterating-over-option"""
+
+[[exercises]]
+name = "clippy3"
+dir = "22_clippy"
+test = false
+strict_clippy = true
+hint = "이번에는 힌트가 없어요!"
+
+# TYPE CONVERSIONS
+
+[[exercises]]
+name = "using_as"
+dir = "23_conversions"
+hint = """
+`average` 함수의 마지막 줄에서 피연산자 중 하나를 `as` 연산자를 사용해서
+기대하는 반환 타입으로 캐스팅하세요."""
+
+[[exercises]]
+name = "from_into"
+dir = "23_conversions"
+hint = """
+`From` 구현 바로 앞에 제공된 단계를 따르세요."""
+
+[[exercises]]
+name = "from_str"
+dir = "23_conversions"
+hint = """
+`FromStr` 구현은 `Person` 객체가 담긴 `Ok`를 반환하거나, 문자열이 유효하지
+않으면 에러가 담긴 `Err`을 반환해야 해요.
+
+이것은 이전 `from_into` 연습문제와 거의 비슷하지만, 기본값으로 돌아가는
+대신 에러를 반환해요.
+
+또 다른 힌트: `Result`의 `map_err` 메서드를 함수나 클로저와 함께 사용해서
+`parse::<u8>`의 에러를 감쌀 수 있어요.
+
+또 다른 힌트: 해결책에서 `?` 연산자를 사용해서 에러를 전파하고 싶다면,
+다음을 참고하세요:
+https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html"""
+
+[[exercises]]
+name = "try_from_into"
+dir = "23_conversions"
+hint = """
+필요한 정수 변환을 수행하고 입력 범위를 확인할 수 있는 `TryFrom` 구현이
+표준 라이브러리에 있을까요?
+
+도전: `TryFrom` 구현을 여러 정수 타입에 대해 제네릭하게 만들 수 있을까요?"""
+
+[[exercises]]
+name = "as_ref_mut"
+dir = "23_conversions"
+hint = """
+함수에 `AsRef<str>` 또는 `AsMut<u32>`를 트레이트 바운드로 추가하세요."""
