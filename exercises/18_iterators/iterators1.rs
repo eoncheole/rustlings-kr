@@ -12,7 +12,7 @@ mod tests {
     fn iterators() {
         let my_fav_fruits = &["banana", "custard apple", "avocado", "peach", "raspberry"];
 
-        // TODO: Create an iterator over the slice.
+        // TODO: 슬라이스에 대한 반복자를 만들어봐.
         let mut fav_fruits_iterator = todo!();
 
         assert_eq!(fav_fruits_iterator.next(), Some(&"banana"));

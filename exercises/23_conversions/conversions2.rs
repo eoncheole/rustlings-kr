@@ -1,26 +1,25 @@
-// The `From` trait is used for value-to-value conversions. If `From` is
-// implemented, an implementation of `Into` is automatically provided.
-// You can read more about it in the documentation:
+// `From` 트레이트는 값을 다른 타입의 값으로 변환할 때 사용해. `From`을
+// 구현하면 `Into` 구현도 자동으로 제공돼. 자세한 내용은 문서를 읽어봐:
 // https://doc.rust-lang.org/std/convert/trait.From.html
 //
-// Representing units of measurements with separate types is a common practice.
-// It avoids accidentally mixing up values of different units of measurement.
+// 측정 단위마다 별도 타입을 사용하는 것은 일반적인 방식이야. 이렇게 하면
+// 단위가 다른 값을 실수로 섞는 일을 막을 수 있어.
 
 struct Celsius(f64);
 
 struct Fahrenheit(f64);
 
 impl From<Celsius> for Fahrenheit {
-    // TODO: Convert Celsius to Fahrenheit. Don't worry about floating-point
-    // precision. The formula is: F = C * 1.8 + 32
+    // TODO: 섭씨를 화씨로 변환해봐. 부동 소수점 정밀도는 신경 쓰지
+    // 않아도 돼. 공식은 F = C * 1.8 + 32야.
 }
 
 impl From<Fahrenheit> for Celsius {
-    // TODO: Convert Fahrenheit to Celsius.
+    // TODO: 화씨를 섭씨로 변환해봐.
 }
 
 fn main() {
-    // You can optionally experiment here.
+    // 여기서 자유롭게 실험해봐.
 }
 
 #[cfg(test)]
