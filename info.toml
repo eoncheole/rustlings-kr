@@ -1119,20 +1119,26 @@ hint = "이번에는 힌트가 없어요!"
 # TYPE CONVERSIONS
 
 [[exercises]]
-name = "using_as"
+name = "conversions1"
 dir = "23_conversions"
 hint = """
 `average` 함수의 마지막 줄에서 피연산자 중 하나를 `as` 연산자를 사용해서
 기대하는 반환 타입으로 캐스팅하세요."""
 
 [[exercises]]
-name = "from_into"
+name = "conversions2"
 dir = "23_conversions"
 hint = """
-`From` 구현 바로 앞에 제공된 단계를 따르세요."""
+The formula for converting from Fahrenheit to Celsius is: C = (F - 32) / 1.8
+This can be derived from the first formula:
+
+             F = C * 1.8 + 32   // now subtract 32 on both sides
+        F - 32 = C * 1.8        // then divide by 1.8
+(F - 32) / 1.8 = C
+"""
 
 [[exercises]]
-name = "from_str"
+name = "conversions3"
 dir = "23_conversions"
 hint = """
 `FromStr` 구현은 `Person` 객체가 담긴 `Ok`를 반환하거나, 문자열이 유효하지
@@ -1149,7 +1155,7 @@ hint = """
 https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html"""
 
 [[exercises]]
-name = "try_from_into"
+name = "conversions4"
 dir = "23_conversions"
 hint = """
 필요한 정수 변환을 수행하고 입력 범위를 확인할 수 있는 `TryFrom` 구현이
@@ -1158,7 +1164,7 @@ hint = """
 도전: `TryFrom` 구현을 여러 정수 타입에 대해 제네릭하게 만들 수 있을까요?"""
 
 [[exercises]]
-name = "as_ref_mut"
+name = "conversions5"
 dir = "23_conversions"
 hint = """
 함수에 `AsRef<str>` 또는 `AsMut<u32>`를 트레이트 바운드로 추가하세요."""
