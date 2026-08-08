@@ -403,13 +403,12 @@ https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-
 name = "structs3"
 dir = "07_structs"
 hint = """
-`is_international`의 경우: 패키지를 국제 배송으로 만드는 것은 무엇일까요?
-거쳐가는 장소와 관련이 있는 것 같지 않나요?
+Methods and associated functions are both declared in an `impl MyType {}`
+block. Methods have a `self`, `&self` or `&mut self` parameter, where `self`
+implicitly has the type of the impl block. Associated functions do not have
+a `self` parameter.
 
-`get_fees`의 경우: 이 메서드는 추가 인자를 받는데, `Package` 구조체에
-이것과 관련된 필드가 있나요?
-
-메서드 구현에 대해 더 알아보려면 Rust 책을 참고하세요:
+Have a look in The Book to find out more about method implementations:
 https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
 
 # ENUMS

@@ -1,38 +1,28 @@
-// 구조체는 데이터를 담지만, 로직도 가질 수 있어. 이 연습문제에서는
-// `Package` 구조체를 정의하고, 여기에 붙은 로직을 테스트해볼 거야.
+// Structs contain data, but can also have logic. In this exercise, we have
+// defined the `Fireworks` struct and a couple of functions that work with it.
+// Turn these free-standing functions into methods and associated functions
+// to express that relationship more clearly in the code.
+
+#![deny(clippy::use_self)] // practice using the `Self` type
 
 #[derive(Debug)]
-struct Package {
-    sender_country: String,
-    recipient_country: String,
-    weight_in_grams: u32,
+struct Fireworks {
+    rockets: usize,
 }
 
-impl Package {
-    fn new(sender_country: String, recipient_country: String, weight_in_grams: u32) -> Self {
-        if weight_in_grams < 10 {
-            // Rust에서 에러를 처리하는 올바른 방법은 아니지만,
-            // 에러 처리는 나중에 배울 거야.
-            panic!("Can't ship a package with weight below 10 grams");
-        }
+// TODO: Turn this function into an associated function on `Fireworks`.
+fn new_fireworks() -> Fireworks {
+    Fireworks { rockets: 0 }
+}
 
-        Self {
-            sender_country,
-            recipient_country,
-            weight_in_grams,
-        }
-    }
+// TODO: Turn this function into a method on `Fireworks`.
+fn add_rockets(fireworks: &mut Fireworks, rockets: usize) {
+    fireworks.rockets += rockets
+}
 
-    // TODO: 함수 시그니처에 올바른 반환 타입을 추가해봐!
-    fn is_international(&self) {
-        // TODO: 이 메서드를 사용하는 테스트를 읽고 패키지가
-        // 언제 국제 배송으로 간주되는지 알아내봐!
-    }
-
-    // TODO: 함수 시그니처에 올바른 반환 타입을 추가해봐!
-    fn get_fees(&self, cents_per_gram: u32) {
-        // TODO: 패키지의 배송비를 계산해봐!
-    }
+// TODO: Turn this function into a method on `Fireworks`.
+fn start(fireworks: Fireworks) -> String {
+    "🚀".repeat(fireworks.rockets)
 }
 
 fn main() {
@@ -44,44 +34,18 @@ mod tests {
     use super::*;
 
     #[test]
-    #[should_panic]
-    fn fail_creating_weightless_package() {
-        let sender_country = String::from("Spain");
-        let recipient_country = String::from("Austria");
+    fn start_some_fireworks() {
+        let f = Fireworks::new();
+        assert_eq!(f.start(), "");
 
-        Package::new(sender_country, recipient_country, 5);
-    }
+        let mut f = Fireworks::new();
+        f.add_rockets(3);
+        assert_eq!(f.start(), "🚀🚀🚀");
 
-    #[test]
-    fn create_international_package() {
-        let sender_country = String::from("Spain");
-        let recipient_country = String::from("Russia");
-
-        let package = Package::new(sender_country, recipient_country, 1200);
-
-        assert!(package.is_international());
-    }
-
-    #[test]
-    fn create_local_package() {
-        let sender_country = String::from("Canada");
-        let recipient_country = sender_country.clone();
-
-        let package = Package::new(sender_country, recipient_country, 1200);
-
-        assert!(!package.is_international());
-    }
-
-    #[test]
-    fn calculate_transport_fees() {
-        let sender_country = String::from("Spain");
-        let recipient_country = String::from("Spain");
-
-        let cents_per_gram = 3;
-
-        let package = Package::new(sender_country, recipient_country, 1500);
-
-        assert_eq!(package.get_fees(cents_per_gram), 4500);
-        assert_eq!(package.get_fees(cents_per_gram * 2), 9000);
+        let mut f = Fireworks::new();
+        f.add_rockets(7);
+        // We don't use method syntax in the last test to ensure the `start`
+        // function takes ownership of the fireworks.
+        assert_eq!(Fireworks::start(f), "🚀🚀🚀🚀🚀🚀🚀");
     }
 }
