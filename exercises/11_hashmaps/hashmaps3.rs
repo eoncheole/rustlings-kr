@@ -14,7 +14,7 @@ struct TeamScores {
     goals_conceded: u8,
 }
 
-fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
+fn build_score_table(results: &str) -> HashMap<&str, TeamScores> {
     // 팀 이름이 키(key)이고, 연관된 구조체가 값(value)이야.
     let mut scores = HashMap::<&str, TeamScores>::new();
 
@@ -50,7 +50,7 @@ England,Spain,1,0";
 
     #[test]
     fn build_scores() {
-        let scores = build_scores_table(RESULTS);
+        let scores = build_score_table(RESULTS);
 
         assert!(["England", "France", "Germany", "Italy", "Poland", "Spain"]
             .into_iter()
@@ -59,7 +59,7 @@ England,Spain,1,0";
 
     #[test]
     fn validate_team_score_1() {
-        let scores = build_scores_table(RESULTS);
+        let scores = build_score_table(RESULTS);
         let team = scores.get("England").unwrap();
         assert_eq!(team.goals_scored, 6);
         assert_eq!(team.goals_conceded, 4);
@@ -67,7 +67,7 @@ England,Spain,1,0";
 
     #[test]
     fn validate_team_score_2() {
-        let scores = build_scores_table(RESULTS);
+        let scores = build_score_table(RESULTS);
         let team = scores.get("Spain").unwrap();
         assert_eq!(team.goals_scored, 0);
         assert_eq!(team.goals_conceded, 3);
