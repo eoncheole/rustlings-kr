@@ -21,8 +21,6 @@ fn main() {
 
     placeholder("rust is fun!".to_owned());
 
-    placeholder("nice weather".into());
-
     placeholder(format!("Interpolation {}", "Station"));
 
     // 주의: 이건 바이트 인덱싱(byte indexing)이지, 문자 인덱싱(character indexing)이 아니야.

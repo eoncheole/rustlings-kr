@@ -258,13 +258,14 @@ let array = ["Are we there yet?"; 100];
 name = "primitive_types4"
 dir = "04_primitive_types"
 hint = """
-Rust 책의 '소유권 이해하기 -> 슬라이스 -> 기타 슬라이스' 섹션을 참고하세요:
-https://doc.rust-lang.org/book/ch04-03-slices.html
-슬라이스에 넣고 싶은 배열 항목의 시작 인덱스와 끝 인덱스(+1)를 사용하세요.
+Take a look at the 'Understanding Ownership -> The Slice Type -> Other Slices'
+section of the book: https://doc.rust-lang.org/book/ch04-03-slices.html and use
+the starting and ending (plus one) indices of the items in the array that you
+want to end up in the slice.
 
-두 번째 인자가 참조인데 `assert_eq!`의 첫 번째 인자에 왜 참조를 위한
-앰퍼샌드(&)가 없는지 궁금하다면, nomicon의 강제 변환(coercion) 챕터를
-참고하세요:
+If you're curious why the first argument of `assert_eq!` does not have an
+ampersand for a reference since the second argument is a reference, take a look
+at the coercion chapter of the nomicon:
 https://doc.rust-lang.org/nomicon/coercions.html"""
 
 [[exercises]]
@@ -295,14 +296,15 @@ https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
 name = "vecs1"
 dir = "05_vecs"
 hint = """
-Rust에서 벡터(Vector)를 정의하는 방법은 두 가지가 있어요.
-1. 하나는 `Vec::new()` 함수를 사용해서 새 벡터를 만들고 `push()` 메서드로
-   채우는 방법이에요.
-2. 두 번째는 `vec![]` 매크로를 사용해서 대괄호 안에 요소를 정의하는
-   방법이에요. 초기 값을 정확히 알고 있을 때 이 방법이 더 간단해요.
+In Rust, there are two basic ways to define a Vector.
+1. One way is to use the `Vec::new()` function to create a new vector
+   and fill it with the `push()` method.
+2. The second way is to use the `vec![]` macro and define your elements
+   inside the square brackets. This way is simpler when you exactly know
+   the initial values.
 
-더 알아보려면 Rust 책의 이 챕터를 참고하세요:
-https://doc.rust-lang.org/book/ch08-01-vectors.html"""
+Check this chapter: https://doc.rust-lang.org/book/ch08-01-vectors.html
+of the Rust book to learn more."""
 
 [[exercises]]
 name = "vecs2"
@@ -402,13 +404,12 @@ https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-
 name = "structs3"
 dir = "07_structs"
 hint = """
-`is_international`의 경우: 패키지를 국제 배송으로 만드는 것은 무엇일까요?
-거쳐가는 장소와 관련이 있는 것 같지 않나요?
+Methods and associated functions are both declared in an `impl MyType {}`
+block. Methods have a `self`, `&self` or `&mut self` parameter, where `self`
+implicitly has the type of the impl block. Associated functions do not have
+a `self` parameter.
 
-`get_fees`의 경우: 이 메서드는 추가 인자를 받는데, `Package` 구조체에
-이것과 관련된 필드가 있나요?
-
-메서드 구현에 대해 더 알아보려면 Rust 책을 참고하세요:
+Have a look in The Book to find out more about method implementations:
 https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
 
 # ENUMS
@@ -424,8 +425,14 @@ name = "enums2"
 dir = "08_enums"
 test = false
 hint = """
-익명 구조체, 구조체, 단일 문자열, 튜플, 데이터 없음 등 서로 다른 타입을 가진
-다양한 변형(variant)을 가진 열거형(enum)을 만들 수 있어요."""
+Enum variants can be defined using three different forms: struct-, tuple- and
+unit-like. Here's an example enum definition, which uses all three forms:
+
+enum EnumUsingAllVariantForms {
+    StructLike { named_field: bool },
+    TupleLike(bool),
+    UnitLike,
+}"""
 
 [[exercises]]
 name = "enums3"
@@ -925,7 +932,7 @@ hint = """
 # SMART POINTERS
 
 [[exercises]]
-name = "box1"
+name = "smart_pointers1"
 dir = "19_smart_pointers"
 hint = """
 컴파일러의 메시지가 도움이 될 거에요: 재귀 타입을 다룰 때 실제 타입의 값을
@@ -941,7 +948,7 @@ https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-bo
 타입도 시도해보세요!"""
 
 [[exercises]]
-name = "rc1"
+name = "smart_pointers2"
 dir = "19_smart_pointers"
 hint = """
 이것은 `Rc<T>` 타입을 사용하는 간단한 연습문제에요. 각 `Planet`은 `Sun`의
@@ -957,7 +964,7 @@ hint = """
 안타깝게도, 명왕성은 더 이상 행성으로 간주되지 않아요 :("""
 
 [[exercises]]
-name = "arc1"
+name = "smart_pointers3"
 dir = "19_smart_pointers"
 test = false
 hint = """
@@ -973,7 +980,7 @@ hint = """
 https://doc.rust-lang.org/book/ch16-00-concurrency.html"""
 
 [[exercises]]
-name = "cow1"
+name = "smart_pointers4"
 dir = "19_smart_pointers"
 hint = """
 `Cow`가 이미 데이터를 소유하고 있다면, `to_mut()`이 호출될 때 클론할
@@ -1119,20 +1126,26 @@ hint = "이번에는 힌트가 없어요!"
 # TYPE CONVERSIONS
 
 [[exercises]]
-name = "using_as"
+name = "conversions1"
 dir = "23_conversions"
 hint = """
 `average` 함수의 마지막 줄에서 피연산자 중 하나를 `as` 연산자를 사용해서
 기대하는 반환 타입으로 캐스팅하세요."""
 
 [[exercises]]
-name = "from_into"
+name = "conversions2"
 dir = "23_conversions"
 hint = """
-`From` 구현 바로 앞에 제공된 단계를 따르세요."""
+The formula for converting from Fahrenheit to Celsius is: C = (F - 32) / 1.8
+This can be derived from the first formula:
+
+             F = C * 1.8 + 32   // now subtract 32 on both sides
+        F - 32 = C * 1.8        // then divide by 1.8
+(F - 32) / 1.8 = C
+"""
 
 [[exercises]]
-name = "from_str"
+name = "conversions3"
 dir = "23_conversions"
 hint = """
 `FromStr` 구현은 `Person` 객체가 담긴 `Ok`를 반환하거나, 문자열이 유효하지
@@ -1149,7 +1162,7 @@ hint = """
 https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html"""
 
 [[exercises]]
-name = "try_from_into"
+name = "conversions4"
 dir = "23_conversions"
 hint = """
 필요한 정수 변환을 수행하고 입력 범위를 확인할 수 있는 `TryFrom` 구현이
@@ -1158,7 +1171,7 @@ hint = """
 도전: `TryFrom` 구현을 여러 정수 타입에 대해 제네릭하게 만들 수 있을까요?"""
 
 [[exercises]]
-name = "as_ref_mut"
+name = "conversions5"
 dir = "23_conversions"
 hint = """
 함수에 `AsRef<str>` 또는 `AsMut<u32>`를 트레이트 바운드로 추가하세요."""
