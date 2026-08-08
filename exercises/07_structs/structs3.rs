@@ -1,26 +1,26 @@
-// Structs contain data, but can also have logic. In this exercise, we have
-// defined the `Fireworks` struct and a couple of functions that work with it.
-// Turn these free-standing functions into methods and associated functions
-// to express that relationship more clearly in the code.
+// 구조체는 데이터를 담지만 로직도 가질 수 있어. 이 연습문제에는
+// `Fireworks` 구조체와 이 구조체를 다루는 함수 몇 개가 정의되어 있어.
+// 코드에서 이 관계가 더 명확히 드러나도록 독립 함수들을 메서드와
+// 연관 함수로 바꿔봐.
 
-#![deny(clippy::use_self)] // practice using the `Self` type
+#![deny(clippy::use_self)] // `Self` 타입을 사용하는 연습
 
 #[derive(Debug)]
 struct Fireworks {
     rockets: usize,
 }
 
-// TODO: Turn this function into an associated function on `Fireworks`.
+// TODO: 이 함수를 `Fireworks`의 연관 함수로 바꿔봐.
 fn new_fireworks() -> Fireworks {
     Fireworks { rockets: 0 }
 }
 
-// TODO: Turn this function into a method on `Fireworks`.
+// TODO: 이 함수를 `Fireworks`의 메서드로 바꿔봐.
 fn add_rockets(fireworks: &mut Fireworks, rockets: usize) {
     fireworks.rockets += rockets
 }
 
-// TODO: Turn this function into a method on `Fireworks`.
+// TODO: 이 함수를 `Fireworks`의 메서드로 바꿔봐.
 fn start(fireworks: Fireworks) -> String {
     "🚀".repeat(fireworks.rockets)
 }
@@ -44,8 +44,8 @@ mod tests {
 
         let mut f = Fireworks::new();
         f.add_rockets(7);
-        // We don't use method syntax in the last test to ensure the `start`
-        // function takes ownership of the fireworks.
+        // 마지막 테스트에서는 `start`가 `f`의 소유권을 가져가는지
+        // 확인하기 위해 메서드 문법을 사용하지 않아.
         assert_eq!(Fireworks::start(f), "🚀🚀🚀🚀🚀🚀🚀");
     }
 }
