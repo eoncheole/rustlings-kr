@@ -258,13 +258,14 @@ let array = ["Are we there yet?"; 100];
 name = "primitive_types4"
 dir = "04_primitive_types"
 hint = """
-Rust 책의 '소유권 이해하기 -> 슬라이스 -> 기타 슬라이스' 섹션을 참고하세요:
-https://doc.rust-lang.org/book/ch04-03-slices.html
-슬라이스에 넣고 싶은 배열 항목의 시작 인덱스와 끝 인덱스(+1)를 사용하세요.
+Take a look at the 'Understanding Ownership -> The Slice Type -> Other Slices'
+section of the book: https://doc.rust-lang.org/book/ch04-03-slices.html and use
+the starting and ending (plus one) indices of the items in the array that you
+want to end up in the slice.
 
-두 번째 인자가 참조인데 `assert_eq!`의 첫 번째 인자에 왜 참조를 위한
-앰퍼샌드(&)가 없는지 궁금하다면, nomicon의 강제 변환(coercion) 챕터를
-참고하세요:
+If you're curious why the first argument of `assert_eq!` does not have an
+ampersand for a reference since the second argument is a reference, take a look
+at the coercion chapter of the nomicon:
 https://doc.rust-lang.org/nomicon/coercions.html"""
 
 [[exercises]]
