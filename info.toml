@@ -925,7 +925,7 @@ hint = """
 # SMART POINTERS
 
 [[exercises]]
-name = "box1"
+name = "smart_pointers1"
 dir = "19_smart_pointers"
 hint = """
 컴파일러의 메시지가 도움이 될 거에요: 재귀 타입을 다룰 때 실제 타입의 값을
@@ -941,7 +941,7 @@ https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-bo
 타입도 시도해보세요!"""
 
 [[exercises]]
-name = "rc1"
+name = "smart_pointers2"
 dir = "19_smart_pointers"
 hint = """
 이것은 `Rc<T>` 타입을 사용하는 간단한 연습문제에요. 각 `Planet`은 `Sun`의
@@ -957,7 +957,7 @@ hint = """
 안타깝게도, 명왕성은 더 이상 행성으로 간주되지 않아요 :("""
 
 [[exercises]]
-name = "arc1"
+name = "smart_pointers3"
 dir = "19_smart_pointers"
 test = false
 hint = """
@@ -973,7 +973,7 @@ hint = """
 https://doc.rust-lang.org/book/ch16-00-concurrency.html"""
 
 [[exercises]]
-name = "cow1"
+name = "smart_pointers4"
 dir = "19_smart_pointers"
 hint = """
 `Cow`가 이미 데이터를 소유하고 있다면, `to_mut()`이 호출될 때 클론할
