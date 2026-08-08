@@ -425,8 +425,14 @@ name = "enums2"
 dir = "08_enums"
 test = false
 hint = """
-익명 구조체, 구조체, 단일 문자열, 튜플, 데이터 없음 등 서로 다른 타입을 가진
-다양한 변형(variant)을 가진 열거형(enum)을 만들 수 있어요."""
+Enum variants can be defined using three different forms: struct-, tuple- and
+unit-like. Here's an example enum definition, which uses all three forms:
+
+enum EnumUsingAllVariantForms {
+    StructLike { named_field: bool },
+    TupleLike(bool),
+    UnitLike,
+}"""
 
 [[exercises]]
 name = "enums3"
