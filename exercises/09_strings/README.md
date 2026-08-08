@@ -5,4 +5,6 @@ Rust에는 두 가지 문자열 타입이 있어: 문자열 슬라이스(string 
 
 ## 더 알아보기
 
-- [Strings](https://doc.rust-lang.org/book/ch08-02-strings.html)
+- [문자열에 UTF-8 텍스트 저장하기](https://doc.rust-lang.org/book/ch08-02-strings.html)
+- [`str` 메서드](https://doc.rust-lang.org/std/primitive.str.html)
+- [`String` 메서드](https://doc.rust-lang.org/std/string/struct.String.html)

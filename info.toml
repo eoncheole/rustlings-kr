@@ -258,14 +258,13 @@ let array = ["Are we there yet?"; 100];
 name = "primitive_types4"
 dir = "04_primitive_types"
 hint = """
-Take a look at the 'Understanding Ownership -> The Slice Type -> Other Slices'
-section of the book: https://doc.rust-lang.org/book/ch04-03-slices.html and use
-the starting and ending (plus one) indices of the items in the array that you
-want to end up in the slice.
+Rust 책의 '소유권 이해하기 -> 슬라이스 -> 그 외 슬라이스' 섹션을 참고하세요:
+https://doc.rust-lang.org/book/ch04-03-slices.html
+슬라이스에 넣고 싶은 배열 항목의 시작 인덱스와 끝 인덱스(+1)를 사용하세요.
 
-If you're curious why the first argument of `assert_eq!` does not have an
-ampersand for a reference since the second argument is a reference, take a look
-at the coercion chapter of the nomicon:
+두 번째 인자가 참조인데 `assert_eq!`의 첫 번째 인자에 왜 참조를 위한
+앰퍼샌드(&)가 없는지 궁금하다면, nomicon의 강제 변환(coercion) 챕터를
+참고하세요:
 https://doc.rust-lang.org/nomicon/coercions.html"""
 
 [[exercises]]
@@ -296,15 +295,14 @@ https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
 name = "vecs1"
 dir = "05_vecs"
 hint = """
-In Rust, there are two basic ways to define a Vector.
-1. One way is to use the `Vec::new()` function to create a new vector
-   and fill it with the `push()` method.
-2. The second way is to use the `vec![]` macro and define your elements
-   inside the square brackets. This way is simpler when you exactly know
-   the initial values.
+Rust에서 벡터(Vector)를 정의하는 기본적인 방법은 두 가지가 있어요.
+1. 하나는 `Vec::new()` 함수를 사용해서 새 벡터를 만들고 `push()` 메서드로
+   채우는 방법이에요.
+2. 두 번째는 `vec![]` 매크로를 사용해서 대괄호 안에 요소를 정의하는
+   방법이에요. 초기 값을 정확히 알고 있을 때 이 방법이 더 간단해요.
 
-Check this chapter: https://doc.rust-lang.org/book/ch08-01-vectors.html
-of the Rust book to learn more."""
+더 알아보려면 Rust 책의 이 챕터를 참고하세요:
+https://doc.rust-lang.org/book/ch08-01-vectors.html"""
 
 [[exercises]]
 name = "vecs2"
@@ -404,12 +402,12 @@ https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-
 name = "structs3"
 dir = "07_structs"
 hint = """
-Methods and associated functions are both declared in an `impl MyType {}`
-block. Methods have a `self`, `&self` or `&mut self` parameter, where `self`
-implicitly has the type of the impl block. Associated functions do not have
-a `self` parameter.
+메서드와 연관 함수는 모두 `impl MyType {}` 블록 안에서 선언해요.
+메서드는 `self`, `&self`, `&mut self` 중 하나를 매개변수로 가지며, 이때
+`self`의 타입은 암묵적으로 `impl` 블록의 타입이에요. 연관 함수에는
+`self` 매개변수가 없어요.
 
-Have a look in The Book to find out more about method implementations:
+메서드 구현에 대해 더 알아보려면 Rust 책을 참고하세요:
 https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
 
 # ENUMS
@@ -425,8 +423,9 @@ name = "enums2"
 dir = "08_enums"
 test = false
 hint = """
-Enum variants can be defined using three different forms: struct-, tuple- and
-unit-like. Here's an example enum definition, which uses all three forms:
+열거형 배리언트는 구조체와 유사한 형태 (struct-like), 튜플과 유사한
+형태 (tuple-like), 유닛과 유사한 형태 (unit-like)로 정의할 수 있어요.
+다음은 세 형태를 모두 사용한 열거형 정의 예시예요:
 
 enum EnumUsingAllVariantForms {
     StructLike { named_field: bool },
@@ -935,7 +934,7 @@ hint = """
 name = "smart_pointers1"
 dir = "19_smart_pointers"
 hint = """
-컴파일러의 메시지가 도움이 될 거에요: 재귀 타입을 다룰 때 실제 타입의 값을
+컴파일러의 메시지가 도움이 될 거에요: 재귀적 타입을 다룰 때 실제 타입의 값을
 저장할 수 없으므로, 값에 대한 참조(포인터)를 저장해야 해요.
 
 따라서 `List`를 `Box` 안에 넣어야 해요. Rust 책에서 더 자세히 알아보세요:
@@ -1136,11 +1135,11 @@ hint = """
 name = "conversions2"
 dir = "23_conversions"
 hint = """
-The formula for converting from Fahrenheit to Celsius is: C = (F - 32) / 1.8
-This can be derived from the first formula:
+화씨를 섭씨로 변환하는 공식은 C = (F - 32) / 1.8이에요.
+이 공식은 첫 번째 공식에서 다음과 같이 유도할 수 있어요:
 
-             F = C * 1.8 + 32   // now subtract 32 on both sides
-        F - 32 = C * 1.8        // then divide by 1.8
+             F = C * 1.8 + 32   // 양변에서 32를 빼요
+        F - 32 = C * 1.8        // 양변을 1.8로 나눠요
 (F - 32) / 1.8 = C
 """
 
