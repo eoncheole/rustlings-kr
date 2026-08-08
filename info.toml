@@ -295,14 +295,15 @@ https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
 name = "vecs1"
 dir = "05_vecs"
 hint = """
-Rust에서 벡터(Vector)를 정의하는 방법은 두 가지가 있어요.
-1. 하나는 `Vec::new()` 함수를 사용해서 새 벡터를 만들고 `push()` 메서드로
-   채우는 방법이에요.
-2. 두 번째는 `vec![]` 매크로를 사용해서 대괄호 안에 요소를 정의하는
-   방법이에요. 초기 값을 정확히 알고 있을 때 이 방법이 더 간단해요.
+In Rust, there are two basic ways to define a Vector.
+1. One way is to use the `Vec::new()` function to create a new vector
+   and fill it with the `push()` method.
+2. The second way is to use the `vec![]` macro and define your elements
+   inside the square brackets. This way is simpler when you exactly know
+   the initial values.
 
-더 알아보려면 Rust 책의 이 챕터를 참고하세요:
-https://doc.rust-lang.org/book/ch08-01-vectors.html"""
+Check this chapter: https://doc.rust-lang.org/book/ch08-01-vectors.html
+of the Rust book to learn more."""
 
 [[exercises]]
 name = "vecs2"
