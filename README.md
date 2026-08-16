@@ -69,7 +69,8 @@ rustlings
 ## 참고 링크
 
 - [Rustlings 공식 사이트](https://rustlings.rust-lang.org)
-- [The Rust Programming Language (한국어)](https://doc.rust-lang.org/book/)
+- [The Rust Programming Language](https://doc.rust-lang.org/book/)
+- [The Rust Programming Language (한국어)](https://doc.rust-kr.org/)
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
 - [Rustlings 공식 저장소](https://github.com/rust-lang/rustlings)
 
