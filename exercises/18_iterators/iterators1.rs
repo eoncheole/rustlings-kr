@@ -10,9 +10,9 @@ fn main() {
 mod tests {
     #[test]
     fn iterators() {
-        let my_fav_fruits = ["banana", "custard apple", "avocado", "peach", "raspberry"];
+        let my_fav_fruits = &["banana", "custard apple", "avocado", "peach", "raspberry"];
 
-        // TODO: 배열에 대한 반복자를 만들어봐.
+        // TODO: 슬라이스에 대한 반복자를 만들어봐.
         let mut fav_fruits_iterator = todo!();
 
         assert_eq!(fav_fruits_iterator.next(), Some(&"banana"));

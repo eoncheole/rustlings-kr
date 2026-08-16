@@ -258,7 +258,7 @@ let array = ["Are we there yet?"; 100];
 name = "primitive_types4"
 dir = "04_primitive_types"
 hint = """
-Rust 책의 '소유권 이해하기 -> 슬라이스 -> 기타 슬라이스' 섹션을 참고하세요:
+Rust 책의 '소유권 이해하기 -> 슬라이스 -> 그 외 슬라이스' 섹션을 참고하세요:
 https://doc.rust-lang.org/book/ch04-03-slices.html
 슬라이스에 넣고 싶은 배열 항목의 시작 인덱스와 끝 인덱스(+1)를 사용하세요.
 
@@ -295,7 +295,7 @@ https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type
 name = "vecs1"
 dir = "05_vecs"
 hint = """
-Rust에서 벡터(Vector)를 정의하는 방법은 두 가지가 있어요.
+Rust에서 벡터(Vector)를 정의하는 기본적인 방법은 두 가지가 있어요.
 1. 하나는 `Vec::new()` 함수를 사용해서 새 벡터를 만들고 `push()` 메서드로
    채우는 방법이에요.
 2. 두 번째는 `vec![]` 매크로를 사용해서 대괄호 안에 요소를 정의하는
@@ -402,11 +402,10 @@ https://doc.rust-lang.org/book/ch05-01-defining-structs.html#creating-instances-
 name = "structs3"
 dir = "07_structs"
 hint = """
-`is_international`의 경우: 패키지를 국제 배송으로 만드는 것은 무엇일까요?
-거쳐가는 장소와 관련이 있는 것 같지 않나요?
-
-`get_fees`의 경우: 이 메서드는 추가 인자를 받는데, `Package` 구조체에
-이것과 관련된 필드가 있나요?
+메서드와 연관 함수는 모두 `impl MyType {}` 블록 안에서 선언해요.
+메서드는 `self`, `&self`, `&mut self` 중 하나를 매개변수로 가지며, 이때
+`self`의 타입은 암묵적으로 `impl` 블록의 타입이에요. 연관 함수에는
+`self` 매개변수가 없어요.
 
 메서드 구현에 대해 더 알아보려면 Rust 책을 참고하세요:
 https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
@@ -424,8 +423,15 @@ name = "enums2"
 dir = "08_enums"
 test = false
 hint = """
-익명 구조체, 구조체, 단일 문자열, 튜플, 데이터 없음 등 서로 다른 타입을 가진
-다양한 변형(variant)을 가진 열거형(enum)을 만들 수 있어요."""
+열거형 배리언트는 구조체와 유사한 형태 (struct-like), 튜플과 유사한
+형태 (tuple-like), 유닛과 유사한 형태 (unit-like)로 정의할 수 있어요.
+다음은 세 형태를 모두 사용한 열거형 정의 예시예요:
+
+enum EnumUsingAllVariantForms {
+    StructLike { named_field: bool },
+    TupleLike(bool),
+    UnitLike,
+}"""
 
 [[exercises]]
 name = "enums3"
@@ -925,10 +931,10 @@ hint = """
 # SMART POINTERS
 
 [[exercises]]
-name = "box1"
+name = "smart_pointers1"
 dir = "19_smart_pointers"
 hint = """
-컴파일러의 메시지가 도움이 될 거에요: 재귀 타입을 다룰 때 실제 타입의 값을
+컴파일러의 메시지가 도움이 될 거에요: 재귀적 타입을 다룰 때 실제 타입의 값을
 저장할 수 없으므로, 값에 대한 참조(포인터)를 저장해야 해요.
 
 따라서 `List`를 `Box` 안에 넣어야 해요. Rust 책에서 더 자세히 알아보세요:
@@ -941,7 +947,7 @@ https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-bo
 타입도 시도해보세요!"""
 
 [[exercises]]
-name = "rc1"
+name = "smart_pointers2"
 dir = "19_smart_pointers"
 hint = """
 이것은 `Rc<T>` 타입을 사용하는 간단한 연습문제에요. 각 `Planet`은 `Sun`의
@@ -957,7 +963,7 @@ hint = """
 안타깝게도, 명왕성은 더 이상 행성으로 간주되지 않아요 :("""
 
 [[exercises]]
-name = "arc1"
+name = "smart_pointers3"
 dir = "19_smart_pointers"
 test = false
 hint = """
@@ -973,7 +979,7 @@ hint = """
 https://doc.rust-lang.org/book/ch16-00-concurrency.html"""
 
 [[exercises]]
-name = "cow1"
+name = "smart_pointers4"
 dir = "19_smart_pointers"
 hint = """
 `Cow`가 이미 데이터를 소유하고 있다면, `to_mut()`이 호출될 때 클론할
@@ -1119,27 +1125,30 @@ hint = "이번에는 힌트가 없어요!"
 # TYPE CONVERSIONS
 
 [[exercises]]
-name = "using_as"
+name = "conversions1"
 dir = "23_conversions"
 hint = """
 `average` 함수의 마지막 줄에서 피연산자 중 하나를 `as` 연산자를 사용해서
 기대하는 반환 타입으로 캐스팅하세요."""
 
 [[exercises]]
-name = "from_into"
+name = "conversions2"
 dir = "23_conversions"
 hint = """
-`From` 구현 바로 앞에 제공된 단계를 따르세요."""
+화씨를 섭씨로 변환하는 공식은 C = (F - 32) / 1.8이에요.
+이 공식은 첫 번째 공식에서 다음과 같이 유도할 수 있어요:
+
+             F = C * 1.8 + 32   // 양변에서 32를 빼요
+        F - 32 = C * 1.8        // 양변을 1.8로 나눠요
+(F - 32) / 1.8 = C
+"""
 
 [[exercises]]
-name = "from_str"
+name = "conversions3"
 dir = "23_conversions"
 hint = """
 `FromStr` 구현은 `Person` 객체가 담긴 `Ok`를 반환하거나, 문자열이 유효하지
 않으면 에러가 담긴 `Err`을 반환해야 해요.
-
-이것은 이전 `from_into` 연습문제와 거의 비슷하지만, 기본값으로 돌아가는
-대신 에러를 반환해요.
 
 또 다른 힌트: `Result`의 `map_err` 메서드를 함수나 클로저와 함께 사용해서
 `parse::<u8>`의 에러를 감쌀 수 있어요.
@@ -1149,7 +1158,7 @@ hint = """
 https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html"""
 
 [[exercises]]
-name = "try_from_into"
+name = "conversions4"
 dir = "23_conversions"
 hint = """
 필요한 정수 변환을 수행하고 입력 범위를 확인할 수 있는 `TryFrom` 구현이
@@ -1158,7 +1167,7 @@ hint = """
 도전: `TryFrom` 구현을 여러 정수 타입에 대해 제네릭하게 만들 수 있을까요?"""
 
 [[exercises]]
-name = "as_ref_mut"
+name = "conversions5"
 dir = "23_conversions"
 hint = """
 함수에 `AsRef<str>` 또는 `AsMut<u32>`를 트레이트 바운드로 추가하세요."""
